@@ -1,6 +1,6 @@
 package com.dynamicauth.dynamicauth.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 import jakarta.persistence.Column;
@@ -56,7 +56,7 @@ public class User {
   private String resetToken;
 
   @Column(name = "reset_token_expiry")
-  private LocalDate resetTokenExpiry;
+  private LocalDateTime resetTokenExpiry;
 
   @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))

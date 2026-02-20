@@ -19,16 +19,13 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
-    private final PermissionService permissionService;
     private final PasswordEncoder passwordEncoder;
 
     public UserService(UserRepository userRepository,
                        RoleRepository roleRepository,
-                       PermissionService permissionService,
                        PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
-        this.permissionService = permissionService;
         this.passwordEncoder = passwordEncoder;
     }
 
