@@ -23,7 +23,6 @@ public class PasswordResetController {
 
   @PostMapping("/send-reset-email")
   public ResponseEntity<String> sendResetEmail(@RequestBody ResetPasswordRequest request) {
-    String email = request.getEmail();
   return ResponseEntity.ok(passwordResetService.sendMail(request.getEmail()));
   }
 

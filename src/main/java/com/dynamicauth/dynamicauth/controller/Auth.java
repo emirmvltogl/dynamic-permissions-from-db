@@ -31,7 +31,6 @@ public class Auth {
   private final CustomUserDetailsService userDetailsService;
   private final JwtUtil jwtUtil;
   private final UserService userService;
-  private final PermissionService permissionService;
 
   public Auth(AuthenticationManager authenticationManager,
       CustomUserDetailsService userDetailsService,
@@ -41,7 +40,6 @@ public class Auth {
     this.userDetailsService = userDetailsService;
     this.jwtUtil = jwtUtil;
     this.userService = userService;
-    this.permissionService = permissionService;
   }
 
   @PostMapping("/login")
@@ -51,7 +49,6 @@ public class Auth {
       authenticationManager.authenticate(
           new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
     } catch (AuthenticationException ex) {
-      ex.printStackTrace();
       return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password: " + ex.getMessage());
     }
     var userDetails = userDetailsService.loadUserByUsername(request.getUsername());
@@ -73,6 +70,5 @@ public class Auth {
       return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
   }
-
 
 }
